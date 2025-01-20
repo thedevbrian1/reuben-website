@@ -16,6 +16,11 @@ export default {
           '"Noto Color Emoji"',
         ],
       },
+      colors: {
+        brand: {
+          green: "#324833",
+        },
+      },
     },
   },
   plugins: [],
