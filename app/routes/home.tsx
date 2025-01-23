@@ -4,14 +4,21 @@ import type { ReactNode } from "react";
 import {
   AppWindow,
   ArrowRight,
+  BriefcaseBusiness,
   Computer,
   Database,
   Mail,
   Map,
   MapPin,
+  Menu,
   Phone,
 } from "lucide-react";
-import { MousePointer } from "~/components/Icon";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  MousePointer,
+  XIcon,
+} from "~/components/Icon";
 import FormSpacer from "~/components/FormSpacer";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
@@ -25,6 +32,20 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  let socials = [
+    {
+      link: "https://x.com",
+      icon: <XIcon />,
+    },
+    {
+      link: "https://instagram.com",
+      icon: <InstagramIcon />,
+    },
+    {
+      link: "https://facebook.com",
+      icon: <FacebookIcon />,
+    },
+  ];
   return (
     <main>
       <Hero />
@@ -32,41 +53,105 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
+      <footer className="bg-brand-yellow py-8">
+        <p className="text-center text-xl">Lionel Espinal</p>
+        <ul className="flex gap-4 justify-center text-black mt-4">
+          {socials.map((item) => (
+            <li
+              key={crypto.randomUUID()}
+              className="hover:scale-105 transition ease-in-out duration-300"
+            >
+              <a href={item.link} target="_blank" rel="noreferrer noopener">
+                <span className="w-6 inline-block">{item.icon}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="text-center mt-4 text-gray-800">
+          Copyright &copy; {new Date().getFullYear()}
+        </p>
+      </footer>
     </main>
   );
 }
 
 function Hero() {
+  let navLinks = [
+    {
+      path: "/",
+      title: "Home",
+    },
+    {
+      path: "/#about",
+      title: "About",
+    },
+    {
+      path: "/#contact",
+      title: "Contact",
+    },
+    {
+      path: "/#projects",
+      title: "Projects",
+    },
+  ];
   return (
-    <div className="px-6 xl:px-0 mt-24 grid lg:grid-cols-2 gap-8">
-      <div>
-        <h1 className="text-3xl font-bold text-center lg:text-left">
-          Hi, I’m <span className="text-orange-500">Leonel Espinal</span> . I am
-          a web developer based in LA.
-        </h1>
-        <p className="mt-4 text-center lg:text-left">
-          I design and build high-performing websites and applications that
-          deliver exceptional user experiences.
-        </p>
-        <Link to="/">Contact me</Link>
-        <Link to="/">View projects</Link>
-      </div>
+    <div className="px-6 xl:px-0 mt-32 lg:max-w-4xl xl:max-w-6xl mx-auto">
+      <nav className="fixed top-5 right-10 left-10 md:left-20 md:right-20 z-20 bg-[#5b6d5c] text-gray-200 py-3 px-4 rounded-2xl flex justify-between items-center">
+        <Link to="/" className="font-semibold flex gap-2">
+          <span className="text-brand-yellow ">L</span>
+          <span>Lionel</span>
+        </Link>
+        <button className="lg:hidden">
+          <Menu />
+        </button>
+        <ul className="hidden lg:flex gap-4">
+          {navLinks.map((item) => (
+            <li
+              key={crypto.randomUUID()}
+              className="hover:text-brand-yellow transition ease-in-out duration-300"
+            >
+              <Link to={item.path}>{item.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div className=" grid lg:grid-cols-2 gap-8">
+        <div>
+          <h1 className="text-3xl lg:text-6xl font-bold text-center lg:text-left">
+            Hi, I’m <span className="text-brand-yellow">Leonel Espinal</span> .
+            I am a web developer based in LA.
+          </h1>
+          <p className="mt-4 text-center lg:text-left text-gray-800">
+            I design and build high-performing websites and applications that
+            deliver exceptional user experiences.
+          </p>
+          <div className="flex items-center gap-2 mt-4">
+            <CTA to="/">Contact me</CTA>
+            <Link
+              to="/"
+              className="rounded-3xl border border-brand-yellow px-4 py-2"
+            >
+              View projects
+            </Link>
+          </div>
+        </div>
 
-      {/* FIXME: Fix responsiveness. Looks terrible 🤮🤮 */}
-      <div className="border border-black">
-        <div className="">
-          <div className="border border-red-500 relative flex justify-end">
-            <img src="/blob.svg" alt="" className="w-56 md:w-64" />
-            <img
-              src="https://www.pngkey.com/png/full/57-576740_black-person-png-businessperson.png"
-              alt=""
-              className="absolute top-0 md:w-96 lg:w-[450px]"
-            />
-            <div className="absolute left-4 md:left-auto md:-bottom-12 lg:-bottom-20 top-4 md:top-auto md:right-16 lg:right-52">
-              <TitleCursor title="Web developer" color="green" />
-            </div>
-            <div className="absolute bottom-6">
-              <TitleCursor title="UI/UX designer" />
+        {/* FIXME: Fix responsiveness. Looks terrible 🤮🤮 */}
+        <div className="border border-black">
+          <div className="">
+            <div className="border border-red-500 relative flex justify-end">
+              <img src="/blob.svg" alt="" className="w-56 md:w-64" />
+              <img
+                src="https://www.pngkey.com/png/full/57-576740_black-person-png-businessperson.png"
+                alt=""
+                className="absolute top-0 md:w-96 lg:w-[450px]"
+              />
+              <div className="absolute left-4 md:left-auto md:-bottom-12 lg:-bottom-20 top-4 md:top-auto md:right-16 lg:right-52">
+                <TitleCursor title="Web developer" color="green" />
+              </div>
+              <div className="absolute bottom-6">
+                <TitleCursor title="UI/UX designer" />
+              </div>
             </div>
           </div>
         </div>
@@ -99,31 +184,103 @@ function TitleCursor({ title, color }: { title: string; color?: string }) {
 }
 
 function About() {
+  let jobs = [
+    {
+      title: "Software engineer",
+      company: "Logicworks",
+      period: "July 2022 - present",
+      details:
+        "Architected and developed a reporting dashboard leveraging FastAPI for high-performance backend APIs and React for interactive frontend components.Designed and implemented scalable, cloud-based data pipelines using AWS Lambda and S3 for real-time report generation.Created reusable React components and optimized rendering for complex data visualizations in Material UI.Improved API response times by 40% by implementing query optimization techniques and asynchronous processing.Partnered with DevOps teams to ensure seamless deployment with Docker and Kubernetes, maintaining 99.9% uptime.",
+    },
+    {
+      title: "Software engineer",
+      company: "Redshelf inc",
+      period: "January 2021 - April 2022",
+      details:
+        "Contributed to the development of comprehensive reporting tools using Django for server-side logic and React for frontend UI/UX.Enhanced backend systems by optimizing database queries with PostgreSQL, reducing report generation time by 30%.Implemented a modular React component architecture to streamline code reuse across dashboards.Worked closely with product managers and designers to improve reporting workflows, increasing end-user engagement by 25%.Integrated third-party analytics tools to support detailed data visualizations and reporting insights.",
+    },
+    {
+      title: "Freelance developer",
+      company: "",
+      period: "June 2018 - December 2020",
+      details:
+        "Designed and implemented scalable web applications using Flask and Django, focusing on RESTful API development and backend optimization.Built dynamic, responsive user interfaces with React, integrating modern libraries like Redux and Material-UI.Delivered complete solutions, including deployment on platforms like Heroku and Azure Container Apps ensuring smooth CI/CD pipelines.Collaborated with clients to gather requirements, deliver prototypes, and finalize high-quality software within deadlines.",
+    },
+  ];
   return (
     <section className="bg-brand-green mt-24 text-gray-100">
-      <div className="py-24 px-6 xl:px-0 lg:max-w-4xl xl:max-w-6xl mx-auto grid lg:grid-cols-2 items-center gap-8">
-        <div className="lg:order-2">
-          <h2>About me</h2>
-          <p className="font-semibold text-3xl lg:text-5xl mt-2">
-            Who is <span className="text-brand-yellow">Lionel</span> ?
-          </p>
-          <p className="text-gray-200 mt-4">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
-            asperiores aliquid tempore dolorum adipisci. Quaerat suscipit minus
-            vitae voluptatum, soluta reiciendis nisi. Libero alias vero delectus
-            exercitationem architecto expedita molestiae. Rerum itaque autem
-            minima reiciendis unde sed quod nam enim.
-          </p>
-          <div className="mt-4">
-            <CTA to="/">Contact me</CTA>
+      <div className="py-24 px-6 xl:px-0 lg:max-w-4xl xl:max-w-6xl mx-auto ">
+        <div className="grid lg:grid-cols-2 items-center gap-8">
+          <div className="lg:order-2 text-center lg:text-left">
+            <h2>About me</h2>
+            <p className="font-semibold text-3xl lg:text-5xl mt-2">
+              Who is <span className="text-brand-yellow">Lionel</span> ?
+            </p>
+            <p className="text-gray-200 mt-4">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
+              asperiores aliquid tempore dolorum adipisci. Quaerat suscipit
+              minus vitae voluptatum, soluta reiciendis nisi. Libero alias vero
+              delectus exercitationem architecto expedita molestiae. Rerum
+              itaque autem minima reiciendis unde sed quod nam enim.
+            </p>
+
+            <div className="mt-4 flex justify-center lg:justify-start">
+              <CTA to="/">Contact me</CTA>
+            </div>
+          </div>
+          <div className="lg:order-1 relative z-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-brand-yellow before:w-64 before:h-64 lg:before:w-80 lg:before:h-80 before:rounded-full before:-z-10 flex justify-center items-center ">
+            <img
+              src="https://png.pngtree.com/png-vector/20240123/ourmid/pngtree-avatar-job-businessman-flat-portrait-of-african-american-man-png-image_11459344.png"
+              alt=""
+              className="w-56 md:w-96 lg:w-[450px]"
+            />
           </div>
         </div>
-        <div className="lg:order-1 relative z-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-brand-yellow before:w-64 before:h-64 lg:before:w-80 lg:before:h-80 before:rounded-full before:-z-10 flex justify-center items-center ">
-          <img
-            src="https://png.pngtree.com/png-vector/20240123/ourmid/pngtree-avatar-job-businessman-flat-portrait-of-african-american-man-png-image_11459344.png"
-            alt=""
-            className="w-56 md:w-96 lg:w-[450px]"
-          />
+        <div className="mt-16 max-w-xl mx-auto">
+          <h3 className="text-center font-semibold text-xl lg:text-3xl">
+            Work experience
+          </h3>
+          <div className="mt-8 space-y-4">
+            {jobs.map((item) => (
+              <div
+                key={crypto.randomUUID()}
+                className={`flex gap-3 p-4 rounded-lg border ${
+                  item.period.includes("present")
+                    ? "border-brand-yellow"
+                    : "border-white/20"
+                } `}
+              >
+                <span>
+                  <BriefcaseBusiness
+                    className={`${
+                      item.period.includes("present") ? "text-brand-yellow" : ""
+                    }`}
+                  />
+                </span>
+                <div className="">
+                  <p className="text-xl">{item.title}</p>
+                  <div className="mt-2 flex gap-2 items-center">
+                    <p className="">{item.company}</p>
+                    <span
+                      className={`${
+                        item.period.includes("present")
+                          ? "text-brand-yellow"
+                          : "text-gray-200"
+                      }`}
+                    >
+                      ({item.period})
+                    </span>
+                  </div>
+                  <p className="mt-2 line-clamp-2 text-gray-300">
+                    {item.details}
+                  </p>
+                  <button className="mt-2 hover:text-brand-yellow">
+                    View more
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -173,14 +330,21 @@ function Skills() {
       <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
         My <span className="text-brand-yellow">skills</span>
       </p>
-      <div className="bg-brand-yellow absolute top-0 w-full overflow-x-auto">
-        <ul className="flex gap-1 p-4 w-full">
-          <li>Web design</li>
-          <li>UI/UX design</li>
-          <li>Web development</li>
+      <div className="bg-brand-yellow absolute z-10 top-0 w-full">
+        <ul className="flex justify-center gap-4 md:gap-8 p-4 w-full items-center">
+          <li className="relative after:absolute after:content-['*'] after:-right-3  md:after:-right-5 after:top-1">
+            Web design
+          </li>
+          <li className="relative after:absolute after:content-['*'] after:-right-3  md:after:-right-5 after:top-1">
+            Web development
+          </li>
+          <li className="hidden md:inline-flex relative after:absolute after:content-['*'] after:-right-3  md:after:-right-5 after:top-1">
+            UI/UX design
+          </li>
           <li>API design</li>
         </ul>
       </div>
+      <div className="absolute top-0 w-full bg-brand-green h-16 -rotate-6 lg:-rotate-3"></div>
       <ul className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-6 xl:px-0 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
         {skills.map((item) => (
           <li
@@ -225,14 +389,14 @@ function Projects() {
     },
   ];
   return (
-    <section className="mt-24 px-6 md:max-w-2xl mx-auto ">
+    <section className="mt-24 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto ">
       <h2 className="text-center">Projects</h2>
       <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
         My <span className="text-brand-yellow">Projects</span>
       </p>
       <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((item) => (
-          <li className="bg-gray-100 p-4 rounded-lg">
+          <li key={crypto.randomUUID()} className="bg-gray-100 p-4 rounded-lg">
             <img src={item.imageSrc} alt="" className="rounded-lg" />
             <p className="mt-4 font-semibold text-lg">{item.title}</p>
             <Link
@@ -253,13 +417,13 @@ function Projects() {
 
 function Contact() {
   return (
-    <section className="mt-24 bg-brand-green py-24 text-white">
-      <div className="px-6 xl:px-0 lg:max-w-4xl xl:max-w-6xl mx-auto">
+    <section className="mt-24 bg-brand-green py-24 text-gray-100">
+      <div className="px-6 xl:px-0 lg:max-w-4xl xl:max-w-4xl mx-auto">
         <h2 className="text-center">Contact</h2>
         <p className="text-center font-semibold text-3xl lg:text-5xl mt-2">
           Get in <span className="text-brand-yellow">touch</span>{" "}
         </p>
-        <p className="text-center mt-4">
+        <p className="text-center mt-4 text-gray-300 text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
         <div className="bg-[#475A47] p-4 mt-8 rounded-lg grid lg:grid-cols-2 lg:items-center gap-8">
