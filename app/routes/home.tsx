@@ -1,6 +1,6 @@
 import { Form, Link } from "react-router";
+import { type ReactNode } from "react";
 import type { Route } from "./+types/home";
-import type { ReactNode } from "react";
 import {
   AppWindow,
   ArrowRight,
@@ -12,6 +12,7 @@ import {
   MapPin,
   Menu,
   Phone,
+  X,
 } from "lucide-react";
 import {
   FacebookIcon,
@@ -54,7 +55,7 @@ export default function Home() {
       <Projects />
       <Contact />
       <footer className="bg-brand-yellow py-8">
-        <p className="text-center text-xl">Lionel Espinal</p>
+        <p className="text-center text-xl">Leonel Espinal</p>
         <ul className="flex gap-4 justify-center text-black mt-4">
           {socials.map((item) => (
             <li
@@ -95,7 +96,7 @@ function Hero() {
     },
   ];
   return (
-    <div className="px-6 xl:px-0 mt-32 lg:max-w-4xl xl:max-w-6xl mx-auto">
+    <div className="px-6 xl:px-0 mt-32 lg:mt-48 lg:max-w-4xl xl:max-w-6xl mx-auto">
       <nav className="fixed top-5 right-10 left-10 md:left-20 md:right-20 z-20 bg-[#5b6d5c] text-gray-200 py-3 px-4 rounded-2xl flex justify-between items-center">
         <Link to="/" className="font-semibold flex gap-2">
           <span className="text-brand-yellow ">L</span>
@@ -214,7 +215,7 @@ function About() {
           <div className="lg:order-2 text-center lg:text-left">
             <h2>About me</h2>
             <p className="font-semibold text-3xl lg:text-5xl mt-2">
-              Who is <span className="text-brand-yellow">Lionel</span> ?
+              Who is <span className="text-brand-yellow">Leonel</span> ?
             </p>
             <p className="text-gray-200 mt-4">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
@@ -241,45 +242,75 @@ function About() {
             Work experience
           </h3>
           <div className="mt-8 space-y-4">
-            {jobs.map((item) => (
-              <div
-                key={crypto.randomUUID()}
-                className={`flex gap-3 p-4 rounded-lg border ${
-                  item.period.includes("present")
-                    ? "border-brand-yellow"
-                    : "border-white/20"
-                } `}
-              >
-                <span>
-                  <BriefcaseBusiness
-                    className={`${
-                      item.period.includes("present") ? "text-brand-yellow" : ""
-                    }`}
-                  />
-                </span>
-                <div className="">
-                  <p className="text-xl">{item.title}</p>
-                  <div className="mt-2 flex gap-2 items-center">
-                    <p className="">{item.company}</p>
-                    <span
-                      className={`${
-                        item.period.includes("present")
-                          ? "text-brand-yellow"
-                          : "text-gray-200"
-                      }`}
-                    >
-                      ({item.period})
+            {jobs.map((item) => {
+              let id = crypto.randomUUID();
+              return (
+                <div key={id}>
+                  <div
+                    className={`flex gap-3 p-4 rounded-lg border ${
+                      item.period.includes("present")
+                        ? "border-brand-yellow"
+                        : "border-white/20"
+                    } `}
+                  >
+                    <span>
+                      <BriefcaseBusiness
+                        className={`${
+                          item.period.includes("present")
+                            ? "text-brand-yellow"
+                            : ""
+                        }`}
+                      />
                     </span>
+                    <div className="">
+                      <p className="text-xl">{item.title}</p>
+                      <div className="mt-2 flex gap-2 items-center">
+                        <p className="">{item.company}</p>
+                        <span
+                          className={`${
+                            item.period.includes("present")
+                              ? "text-brand-yellow"
+                              : "text-gray-200"
+                          }`}
+                        >
+                          ({item.period})
+                        </span>
+                      </div>
+                      <p className="mt-2 line-clamp-2 text-gray-300">
+                        {item.details}
+                      </p>
+                      <button
+                        popoverTarget={`details-${id}`}
+                        className="mt-2 hover:text-brand-yellow"
+                      >
+                        View more
+                      </button>
+                    </div>
                   </div>
-                  <p className="mt-2 line-clamp-2 text-gray-300">
-                    {item.details}
-                  </p>
-                  <button className="mt-2 hover:text-brand-yellow">
-                    View more
-                  </button>
+                  <div
+                    key={id}
+                    id={`details-${id}`}
+                    popover="auto"
+                    className="p-4 lg:p-8 rounded-lg"
+                  >
+                    {/* {content} */}
+                    <div className="flex justify-end">
+                      <button
+                        popoverTarget={`details-${id}`}
+                        popoverTargetAction="hide"
+                        className="bg-red-500 text-white p-2 rounded-full"
+                      >
+                        <X />
+                      </button>
+                    </div>
+                    <h4 className="font-semibold text-lg">
+                      {item.title} ({item.company})
+                    </h4>
+                    <p className="mt-4 text-gray-800">{item.details}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
