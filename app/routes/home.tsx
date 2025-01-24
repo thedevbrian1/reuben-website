@@ -127,9 +127,9 @@ function Hero() {
             deliver exceptional user experiences.
           </p>
           <div className="flex items-center gap-2 mt-4">
-            <CTA to="/">Contact me</CTA>
+            <CTA to="/#contact">Contact me</CTA>
             <Link
-              to="/"
+              to="/#projects"
               className="rounded-3xl border border-brand-yellow px-4 py-2"
             >
               View projects
@@ -226,7 +226,7 @@ function About() {
             </p>
 
             <div className="mt-4 flex justify-center lg:justify-start">
-              <CTA to="/">Contact me</CTA>
+              <CTA to="/#contact">Contact me</CTA>
             </div>
           </div>
           <div className="lg:order-1 relative z-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-brand-yellow before:w-64 before:h-64 lg:before:w-80 lg:before:h-80 before:rounded-full before:-z-10 flex justify-center items-center ">
@@ -443,7 +443,7 @@ function Projects() {
         ))}
       </ul>
       <div className="mt-12 flex justify-center">
-        <CTA to="/">Contact me</CTA>
+        <CTA to="/#contact">Contact me</CTA>
       </div>
     </section>
   );
