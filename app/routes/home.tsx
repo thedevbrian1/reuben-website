@@ -263,7 +263,7 @@ function About() {
                       />
                     </span>
                     <div className="">
-                      <p className="text-xl">{item.title}</p>
+                      <p className="text-xl font-semibold">{item.title}</p>
                       <div className="mt-2 flex gap-2 items-center">
                         <p className="">{item.company}</p>
                         <span
@@ -276,7 +276,7 @@ function About() {
                           ({item.period})
                         </span>
                       </div>
-                      <p className="mt-2 line-clamp-2 text-gray-300">
+                      <p className="mt-2 line-clamp-2 text-gray-300/90">
                         {item.details}
                       </p>
                       <button
