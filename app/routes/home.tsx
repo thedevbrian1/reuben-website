@@ -137,9 +137,9 @@ function Hero() {
         </div>
 
         {/* FIXME: Fix responsiveness. Looks terrible 🤮🤮 */}
-        <div className="border border-black">
+        <div className="">
           <div className="">
-            <div className="border border-red-500 relative flex justify-end">
+            <div className="relative flex justify-end">
               <img src="/blob.svg" alt="" className="w-56 md:w-64" />
               <img
                 src="https://www.pngkey.com/png/full/57-576740_black-person-png-businessperson.png"
@@ -208,7 +208,7 @@ function About() {
     },
   ];
   return (
-    <section className="bg-brand-green mt-24 text-gray-100">
+    <section id="about" className="bg-brand-green mt-24 text-gray-100">
       <div className="py-24 px-6 xl:px-0 lg:max-w-4xl xl:max-w-6xl mx-auto ">
         <div className="grid lg:grid-cols-2 items-center gap-8">
           <div className="lg:order-2 text-center lg:text-left">
@@ -389,7 +389,10 @@ function Projects() {
     },
   ];
   return (
-    <section className="mt-24 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto ">
+    <section
+      id="projects"
+      className="mt-24 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto "
+    >
       <h2 className="text-center">Projects</h2>
       <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
         My <span className="text-brand-yellow">Projects</span>
@@ -417,7 +420,7 @@ function Projects() {
 
 function Contact() {
   return (
-    <section className="mt-24 bg-brand-green py-24 text-gray-100">
+    <section id="contact" className="mt-24 bg-brand-green py-24 text-gray-100">
       <div className="px-6 xl:px-0 lg:max-w-4xl xl:max-w-4xl mx-auto">
         <h2 className="text-center">Contact</h2>
         <p className="text-center font-semibold text-3xl lg:text-5xl mt-2">
