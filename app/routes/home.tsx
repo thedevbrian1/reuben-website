@@ -1,4 +1,4 @@
-import { Form, Link } from "react-router";
+import { Form, Link, useNavigation } from "react-router";
 import { type ReactNode } from "react";
 import type { Route } from "./+types/home";
 import {
@@ -24,6 +24,7 @@ import FormSpacer from "~/components/FormSpacer";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
+import { badRequest, validateEmail, validateName } from "~/.server/validation";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -32,7 +33,31 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
+export async function action({ request }: Route.ActionArgs) {
+  let formData = await request.formData();
+
+  let name = String(formData.get("name"));
+  let email = String(formData.get("email"));
+  let message = String(formData.get("message"));
+
+  let fieldErrors = {
+    name: validateName(name),
+    email: validateEmail(email),
+    message: validateName(message),
+  };
+
+  if (Object.values(fieldErrors).some(Boolean)) {
+    return badRequest({ fieldErrors });
+  }
+
+  // Send email
+
+  return null;
+}
+
+export default function Home({ actionData }: Route.ComponentProps) {
+  let fieldErrors = actionData?.fieldErrors;
+
   let socials = [
     {
       link: "https://x.com",
@@ -53,7 +78,7 @@ export default function Home() {
       <About />
       <Skills />
       <Projects />
-      <Contact />
+      <Contact fieldErrors={fieldErrors} />
       <footer className="bg-brand-yellow py-8">
         <p className="text-center text-xl">Leonel Espinal</p>
         <ul className="flex gap-4 justify-center text-black mt-4">
@@ -449,7 +474,14 @@ function Projects() {
   );
 }
 
-function Contact() {
+function Contact({
+  fieldErrors,
+}: {
+  fieldErrors: { name?: string; email?: string; message?: string };
+}) {
+  let navigation = useNavigation();
+  let isSubmitting = navigation.state === "submitting";
+
   return (
     <section id="contact" className="mt-24 bg-brand-green py-24 text-gray-100">
       <div className="px-6 xl:px-0 lg:max-w-4xl xl:max-w-4xl mx-auto">
@@ -498,32 +530,59 @@ function Contact() {
             <h3 className="font-semibold text-xl">Send me a message</h3>
             <Form method="post" className="space-y-4 mt-8">
               <FormSpacer>
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">
+                  Name{" "}
+                  {fieldErrors?.name ? (
+                    <span className="text-red-500">{fieldErrors.name}</span>
+                  ) : null}
+                </Label>
                 <Input
                   type="text"
                   name="name"
                   id="name"
                   placeholder="John Doe"
+                  className={`${
+                    fieldErrors?.name ? "border-2 border-red-500" : ""
+                  }`}
                 />
               </FormSpacer>
               <FormSpacer>
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">
+                  Email{" "}
+                  {fieldErrors?.email ? (
+                    <span className="text-red-500">{fieldErrors.email}</span>
+                  ) : null}
+                </Label>
                 <Input
                   type="email"
                   name="email"
                   id="email"
                   placeholder="john@email.com"
+                  className={`${
+                    fieldErrors?.email ? "border-2 border-red-500" : ""
+                  }`}
                 />
               </FormSpacer>
               <FormSpacer>
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" />
+                <Label htmlFor="message">
+                  Message{" "}
+                  {fieldErrors?.message ? (
+                    <span className="text-red-500">{fieldErrors.message}</span>
+                  ) : null}
+                </Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  className={`${
+                    fieldErrors?.message ? "border-2 border-red-500" : ""
+                  }`}
+                />
               </FormSpacer>
               <button
                 type="submit"
-                className="bg-brand-yellow px-4 py-2 rounded-lg w-full"
+                className="bg-brand-yellow px-4 py-2 rounded-lg w-full text-black"
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </Form>
           </div>
