@@ -21,6 +21,7 @@ export default {
         brand: {
           green: "#324833",
           yellow: "#F9AD1B",
+          "light-yellow": "#fbc65f",
         },
       },
       borderRadius: {

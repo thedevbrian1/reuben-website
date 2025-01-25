@@ -169,7 +169,7 @@ function Hero() {
             <CTA to="/#contact">Contact me</CTA>
             <Link
               to="/#projects"
-              className="rounded-3xl border border-brand-yellow px-4 py-2"
+              className="rounded-3xl border border-brand-yellow hover:bg-gray-100 transition ease-in-out duration-300 px-4 py-2"
             >
               View projects
             </Link>
@@ -361,9 +361,9 @@ function CTA({ to, children }: { to: string; children: ReactNode }) {
   return (
     <Link
       to={to}
-      className="bg-brand-yellow py-1 rounded-3xl flex items-center gap-1 max-w-fit px-1"
+      className="bg-brand-yellow py-1 rounded-3xl flex items-center gap-1 max-w-fit px-1 group"
     >
-      <span className="bg-brand-green py-2 px-4 text-white rounded-3xl">
+      <span className="bg-brand-green group-hover:bg-[#5b6d5c] transition ease-in-out duration-300 py-2 px-4 text-white rounded-3xl">
         {children}
       </span>
       <span className="bg-white text-black w-9 h-9 grid place-items-center rounded-full">
@@ -474,7 +474,7 @@ function Projects() {
             <p className="mt-4 font-semibold text-lg">{item.title}</p>
             <Link
               to="/"
-              className="bg-brand-yellow px-4 py-2 rounded-md mt-4 flex max-w-fit"
+              className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-md mt-4 flex max-w-fit"
             >
               View project
             </Link>
@@ -596,7 +596,7 @@ function Contact({
               </FormSpacer>
               <button
                 type="submit"
-                className="bg-brand-yellow px-4 py-2 rounded-lg w-full text-black"
+                className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-lg w-full text-black"
               >
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
