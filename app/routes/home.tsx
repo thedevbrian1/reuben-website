@@ -26,10 +26,19 @@ import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { badRequest, validateEmail, validateName } from "~/.server/validation";
 
+interface FieldError {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Leonel Espinal" },
+    {
+      name: "description",
+      content: "Software developer based in Los Angeles, California",
+    },
   ];
 }
 
@@ -40,7 +49,7 @@ export async function action({ request }: Route.ActionArgs) {
   let email = String(formData.get("email"));
   let message = String(formData.get("message"));
 
-  let fieldErrors = {
+  let fieldErrors: FieldError = {
     name: validateName(name),
     email: validateEmail(email),
     message: validateName(message),
@@ -57,6 +66,11 @@ export async function action({ request }: Route.ActionArgs) {
 
 export default function Home({ actionData }: Route.ComponentProps) {
   let fieldErrors = actionData?.fieldErrors;
+
+  // if (actionData && typeof actionData === 'object') {
+
+  //   fieldErrors = actionData?.fieldErrors;
+  // }
 
   let socials = [
     {
@@ -78,7 +92,7 @@ export default function Home({ actionData }: Route.ComponentProps) {
       <About />
       <Skills />
       <Projects />
-      <Contact fieldErrors={fieldErrors} />
+      <Contact errors={fieldErrors || {}} />
       <footer className="bg-brand-yellow py-8">
         <p className="text-center text-xl">Leonel Espinal</p>
         <ul className="flex gap-4 justify-center text-black mt-4">
@@ -145,7 +159,7 @@ function Hero() {
         <div>
           <h1 className="text-3xl lg:text-6xl font-bold text-center lg:text-left">
             Hi, I’m <span className="text-brand-yellow">Leonel Espinal</span> .
-            I am a web developer based in LA.
+            I am a software developer based in LA.
           </h1>
           <p className="mt-4 text-center lg:text-left text-gray-800">
             I design and build high-performing websites and applications that
@@ -475,9 +489,13 @@ function Projects() {
 }
 
 function Contact({
-  fieldErrors,
+  errors,
 }: {
-  fieldErrors: { name?: string; email?: string; message?: string };
+  errors: {
+    name?: string;
+    email?: string;
+    message?: string;
+  };
 }) {
   let navigation = useNavigation();
   let isSubmitting = navigation.state === "submitting";
@@ -532,8 +550,8 @@ function Contact({
               <FormSpacer>
                 <Label htmlFor="name">
                   Name{" "}
-                  {fieldErrors?.name ? (
-                    <span className="text-red-500">{fieldErrors.name}</span>
+                  {errors?.name ? (
+                    <span className="text-red-500">{errors.name}</span>
                   ) : null}
                 </Label>
                 <Input
@@ -541,16 +559,14 @@ function Contact({
                   name="name"
                   id="name"
                   placeholder="John Doe"
-                  className={`${
-                    fieldErrors?.name ? "border-2 border-red-500" : ""
-                  }`}
+                  className={`${errors?.name ? "border-2 border-red-500" : ""}`}
                 />
               </FormSpacer>
               <FormSpacer>
                 <Label htmlFor="email">
                   Email{" "}
-                  {fieldErrors?.email ? (
-                    <span className="text-red-500">{fieldErrors.email}</span>
+                  {errors?.email ? (
+                    <span className="text-red-500">{errors.email}</span>
                   ) : null}
                 </Label>
                 <Input
@@ -559,22 +575,22 @@ function Contact({
                   id="email"
                   placeholder="john@email.com"
                   className={`${
-                    fieldErrors?.email ? "border-2 border-red-500" : ""
+                    errors?.email ? "border-2 border-red-500" : ""
                   }`}
                 />
               </FormSpacer>
               <FormSpacer>
                 <Label htmlFor="message">
                   Message{" "}
-                  {fieldErrors?.message ? (
-                    <span className="text-red-500">{fieldErrors.message}</span>
+                  {errors?.message ? (
+                    <span className="text-red-500">{errors.message}</span>
                   ) : null}
                 </Label>
                 <Textarea
                   id="message"
                   name="message"
                   className={`${
-                    fieldErrors?.message ? "border-2 border-red-500" : ""
+                    errors?.message ? "border-2 border-red-500" : ""
                   }`}
                 />
               </FormSpacer>
