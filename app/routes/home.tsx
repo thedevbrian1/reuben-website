@@ -135,7 +135,7 @@ function Hero() {
     },
   ];
   return (
-    <div className="px-6 xl:px-0 mt-32 lg:mt-48 lg:max-w-4xl xl:max-w-6xl mx-auto">
+    <div className="px-6 xl:px-0 mt-32 md:mt-48 lg:max-w-4xl xl:max-w-6xl mx-auto">
       <nav className="fixed top-5 right-10 left-10 md:left-20 md:right-20 z-20 bg-[#5b6d5c] text-gray-200 py-3 px-4 rounded-2xl flex justify-between items-center">
         <Link to="/" className="font-semibold flex gap-2">
           <span className="text-brand-yellow ">L</span>
@@ -155,17 +155,17 @@ function Hero() {
           ))}
         </ul>
       </nav>
-      <div className=" grid lg:grid-cols-2 gap-8">
+      <div className=" md:max-w-xl lg:max-w-none mx-auto grid lg:grid-cols-2 gap-16 ">
         <div>
-          <h1 className="text-3xl lg:text-6xl font-bold text-center lg:text-left">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center lg:text-left">
             Hi, I’m <span className="text-brand-yellow">Leonel Espinal</span> .
             I am a software developer based in LA.
           </h1>
-          <p className="mt-4 text-center lg:text-left text-gray-800">
+          <p className="mt-4 md:text-lg text-center lg:text-left text-gray-800">
             I design and build high-performing websites and applications that
             deliver exceptional user experiences.
           </p>
-          <div className="flex items-center gap-2 mt-4">
+          <div className="flex items-center justify-center lg:justify-start gap-2 mt-4">
             <CTA to="/#contact">Contact me</CTA>
             <Link
               to="/#projects"
@@ -176,22 +176,21 @@ function Hero() {
           </div>
         </div>
 
-        {/* FIXME: Fix responsiveness. Looks terrible 🤮🤮 */}
-        <div className="">
-          <div className="">
-            <div className="relative flex justify-end">
-              <img src="/blob.svg" alt="" className="w-56 md:w-64" />
+        <div className="flex justify-center">
+          <div className="relative flex justify-end w-56 md:w-64">
+            <img src="/blob.svg" alt="" className="w-full" />
+            <div className="absolute top-0 w-64 md:w-96 lg:w-[450px]">
               <img
                 src="https://www.pngkey.com/png/full/57-576740_black-person-png-businessperson.png"
                 alt=""
-                className="absolute top-0 md:w-96 lg:w-[450px]"
+                className="w-full"
               />
-              <div className="absolute left-4 md:left-auto md:-bottom-12 lg:-bottom-20 top-4 md:top-auto md:right-16 lg:right-52">
-                <TitleCursor title="Web developer" color="green" />
-              </div>
-              <div className="absolute bottom-6">
-                <TitleCursor title="UI/UX designer" />
-              </div>
+            </div>
+            <div className="absolute left-4 md:left-auto md:-bottom-12 lg:-bottom-20 top-4 md:top-auto md:right-16 lg:right-24">
+              <TitleCursor title="Web developer" color="green" />
+            </div>
+            <div className="absolute bottom-6">
+              <TitleCursor title="UI/UX designer" />
             </div>
           </div>
         </div>
@@ -248,9 +247,12 @@ function About() {
     },
   ];
   return (
-    <section id="about" className="bg-brand-green mt-24 text-gray-100">
+    <section
+      id="about"
+      className="bg-brand-green mt-24 md:mt-36 lg:mt-48 text-gray-100"
+    >
       <div className="py-24 px-6 xl:px-0 lg:max-w-4xl xl:max-w-6xl mx-auto ">
-        <div className="grid lg:grid-cols-2 items-center gap-8">
+        <div className="grid lg:grid-cols-2 items-center gap-16">
           <div className="lg:order-2 text-center lg:text-left">
             <h2>About me</h2>
             <p className="font-semibold text-3xl lg:text-5xl mt-2">
@@ -301,10 +303,12 @@ function About() {
                         }`}
                       />
                     </span>
-                    <div className="">
+                    <div>
                       <p className="text-xl font-semibold">{item.title}</p>
                       <div className="mt-2 flex gap-2 items-center">
-                        <p className="">{item.company}</p>
+                        <p className="text-[#c4d567] font-semibold">
+                          {item.company}
+                        </p>
                         <span
                           className={`${
                             item.period.includes("present")
@@ -395,7 +399,7 @@ function Skills() {
     },
   ];
   return (
-    <section className="mt-24 pt-36 relative">
+    <section className="mt-24 md:mt-36 lg:mt-48 pt-36 relative">
       <h2 className="text-center">Skills</h2>
       <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
         My <span className="text-brand-yellow">skills</span>
@@ -461,7 +465,7 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="mt-24 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto "
+      className="mt-24 md:mt-36 lg:mt-48 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto "
     >
       <h2 className="text-center">Projects</h2>
       <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
@@ -501,8 +505,11 @@ function Contact({
   let isSubmitting = navigation.state === "submitting";
 
   return (
-    <section id="contact" className="mt-24 bg-brand-green py-24 text-gray-100">
-      <div className="px-6 xl:px-0 lg:max-w-4xl xl:max-w-4xl mx-auto">
+    <section
+      id="contact"
+      className="mt-24 md:mt-36 lg:mt-48 bg-brand-green py-24 text-gray-100"
+    >
+      <div className="px-6 md:px-12 xl:px-0 lg:max-w-4xl xl:max-w-4xl mx-auto">
         <h2 className="text-center">Contact</h2>
         <p className="text-center font-semibold text-3xl lg:text-5xl mt-2">
           Get in <span className="text-brand-yellow">touch</span>{" "}
@@ -510,7 +517,7 @@ function Contact({
         <p className="text-center mt-4 text-gray-300 text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
-        <div className="bg-[#475A47] p-4 mt-8 rounded-lg grid lg:grid-cols-2 lg:items-center gap-8">
+        <div className="bg-[#475A47] p-4 mt-8 rounded-lg grid md:grid-cols-2 lg:items-center gap-8">
           <div className="bg-brand-yellow rounded-lg text-black p-4 max-h-fit">
             <h3 className="font-semibold text-xl">Contact information</h3>
             <address className="mt-8 space-y-4">
