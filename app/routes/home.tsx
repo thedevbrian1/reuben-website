@@ -141,7 +141,7 @@ function Hero() {
           <span className="text-brand-yellow ">L</span>
           <span>Lionel</span>
         </Link>
-        <button className="lg:hidden">
+        <button popoverTarget="mobile-menu" className="lg:hidden">
           <Menu />
         </button>
         <ul className="hidden lg:flex gap-4">
@@ -154,6 +154,31 @@ function Hero() {
             </li>
           ))}
         </ul>
+        <div
+          popover="auto"
+          id="mobile-menu"
+          className="p-4 rounded-lg bg-white/80 backdrop-blur"
+        >
+          <div className="flex justify-end">
+            <button
+              popoverTarget="mobile-menu"
+              popoverTargetAction="hide"
+              className="text-white w-8 h-8 rounded-full bg-red-500 grid place-items-center"
+            >
+              <X />
+            </button>
+          </div>
+          <ul className="space-y-2 text-gray-800 mt-4">
+            {navLinks.map((item) => (
+              <li
+                key={crypto.randomUUID()}
+                className="hover:text-brand-yellow transition ease-in-out duration-300"
+              >
+                <Link to={item.path}>{item.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
       <div className=" md:max-w-xl lg:max-w-none mx-auto grid lg:grid-cols-2 gap-16 ">
         <div>
