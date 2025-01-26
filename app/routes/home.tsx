@@ -85,7 +85,7 @@ export default function Home({ actionData }: Route.ComponentProps) {
     <main>
       <Hero />
       <About />
-      <Skills />
+      {/* <Skills /> */}
       <Projects />
       <Contact errors={fieldErrors || {}} />
       <footer className="bg-brand-yellow py-8">
@@ -296,7 +296,7 @@ function About() {
       className="bg-brand-green mt-24 md:mt-28 lg:mt-36 text-gray-100"
     >
       <div className="py-24 px-6 xl:px-0 lg:max-w-4xl xl:max-w-6xl mx-auto ">
-        <div className="grid  items-center gap-16">
+        <div className="grid lg:grid-cols-2 justify-items-center items-center gap-16">
           <div className="text-center">
             <h2>About me</h2>
             <p className="font-semibold text-3xl lg:text-5xl mt-2">
@@ -313,6 +313,22 @@ function About() {
             <div className="mt-4 flex justify-center">
               <CTA to="/#contact">Contact me</CTA>
             </div>
+          </div>
+          <div>
+            <h3 className="font-semibold text-xl lg:text-3xl text-center">
+              My <span className="text-brand-yellow">skills</span>{" "}
+            </h3>
+            <ul className="mt-4 text-gray-200 space-y-2 list-image-[url(/check.svg)]">
+              {[
+                "Software development",
+                "Web design",
+                "Database development",
+              ].map((item) => (
+                <li key={crypto.randomUUID()} className="">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
           {/* <div className="hidden lg:flex lg:order-1 relative z-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-brand-yellow before:w-64 before:h-64 lg:before:w-80 lg:before:h-80 before:rounded-full before:-z-10  justify-center items-center ">
             <img
@@ -332,7 +348,7 @@ function About() {
               return (
                 <div key={id}>
                   <div
-                    className={`flex gap-3 p-4 rounded-lg border ${
+                    className={`flex gap-3 p-4 rounded-lg bg-[#475a47] border ${
                       item.period.includes("present")
                         ? "border-brand-yellow"
                         : "border-white/20"
