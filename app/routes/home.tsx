@@ -67,11 +67,6 @@ export async function action({ request }: Route.ActionArgs) {
 export default function Home({ actionData }: Route.ComponentProps) {
   let fieldErrors = actionData?.fieldErrors;
 
-  // if (actionData && typeof actionData === 'object') {
-
-  //   fieldErrors = actionData?.fieldErrors;
-  // }
-
   let socials = [
     {
       link: "https://x.com",
@@ -140,7 +135,7 @@ function Hero() {
     },
   ];
   return (
-    <div className="mt-8 px-6 xl:px-0  lg:max-w-4xl xl:max-w-6xl mx-auto border border-green-500">
+    <div className="mt-8 px-6 xl:px-0  lg:max-w-4xl xl:max-w-6xl mx-auto">
       <nav className=" bg-[#5b6d5c] text-gray-200 py-3 px-4 rounded-2xl flex justify-between items-center">
         <Link
           to="/"
@@ -204,7 +199,7 @@ function Hero() {
           </ul>
         </div>
       </nav>
-      <div className="mt-20 md:mt-28 md:max-w-xl lg:max-w-none mx-auto border border-red-500 ">
+      <div className="mt-20 md:mt-28 md:max-w-xl lg:max-w-none mx-auto ">
         <div>
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center">
             Hi, I’m <span className="text-brand-yellow">Leonel Espinal</span> .
