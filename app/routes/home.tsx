@@ -359,7 +359,7 @@ function About() {
                     key={id}
                     id={`details-${id}`}
                     popover="auto"
-                    className="p-4 lg:p-8 rounded-lg"
+                    className="p-4 lg:p-8 rounded-lg bg-[#5b6d5c]/80 backdrop-blur "
                   >
                     {/* {content} */}
                     <div className="flex justify-end">
@@ -371,10 +371,10 @@ function About() {
                         <X />
                       </button>
                     </div>
-                    <h4 className="font-semibold text-lg">
+                    <h4 className="font-semibold text-lg text-gray-100">
                       {item.title} ({item.company})
                     </h4>
-                    <p className="mt-4 text-gray-800">{item.details}</p>
+                    <p className="mt-4 text-gray-200">{item.details}</p>
                   </div>
                 </div>
               );
