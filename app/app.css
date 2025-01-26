@@ -21,6 +21,15 @@ body {
   max-width: 70vw;
 }
 
+/* .anchor-button {
+  anchor-name: --anchor-el;
+}
+
+.positioned-el {
+  position-anchor: --anchor-el;
+  top: anchor(bottom);
+} */
+
 #mobile-menu:popover-open {
   min-width: 200px;
   min-height: 100px;

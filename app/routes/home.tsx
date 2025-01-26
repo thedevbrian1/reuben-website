@@ -101,7 +101,12 @@ export default function Home({ actionData }: Route.ComponentProps) {
               key={crypto.randomUUID()}
               className="hover:scale-105 transition ease-in-out duration-300"
             >
-              <a href={item.link} target="_blank" rel="noreferrer noopener">
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-block focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
+              >
                 <span className="w-6 inline-block">{item.icon}</span>
               </a>
             </li>
@@ -135,25 +140,39 @@ function Hero() {
     },
   ];
   return (
-    <div className="px-6 xl:px-0 mt-32 md:mt-48 lg:max-w-4xl xl:max-w-6xl mx-auto">
-      <nav className="fixed top-5 right-10 left-10 md:left-20 md:right-20 z-20 bg-[#5b6d5c] text-gray-200 py-3 px-4 rounded-2xl flex justify-between items-center">
-        <Link to="/" className="font-semibold flex gap-2">
+    <div className="mt-8 px-6 xl:px-0  lg:max-w-4xl xl:max-w-6xl mx-auto border border-green-500">
+      <nav className=" bg-[#5b6d5c] text-gray-200 py-3 px-4 rounded-2xl flex justify-between items-center">
+        <Link
+          to="/"
+          className="font-semibold flex gap-2 focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
+        >
           <span className="text-brand-yellow ">L</span>
           <span>Lionel</span>
         </Link>
-        <button popoverTarget="mobile-menu" className="lg:hidden">
+        <button
+          popoverTarget="mobile-menu"
+          className="lg:hidden focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
+        >
           <Menu />
         </button>
+        {/* Desktop menu */}
         <ul className="hidden lg:flex gap-4">
           {navLinks.map((item) => (
             <li
               key={crypto.randomUUID()}
               className="hover:text-brand-yellow transition ease-in-out duration-300"
             >
-              <Link to={item.path}>{item.title}</Link>
+              <Link
+                to={item.path}
+                className="focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
+              >
+                {item.title}
+              </Link>
             </li>
           ))}
         </ul>
+
+        {/* Mobile menu */}
         <div
           popover="auto"
           id="mobile-menu"
@@ -163,7 +182,7 @@ function Hero() {
             <button
               popoverTarget="mobile-menu"
               popoverTargetAction="hide"
-              className="text-white w-8 h-8 rounded-full bg-red-500 grid place-items-center"
+              className="text-white w-8 h-8 rounded-full bg-red-500 grid place-items-center focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
             >
               <X />
             </button>
@@ -174,34 +193,39 @@ function Hero() {
                 key={crypto.randomUUID()}
                 className="hover:text-brand-yellow transition ease-in-out duration-300"
               >
-                <Link to={item.path}>{item.title}</Link>
+                <Link
+                  to={item.path}
+                  className="focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
+                >
+                  {item.title}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
       </nav>
-      <div className=" md:max-w-xl lg:max-w-none mx-auto grid lg:grid-cols-2 gap-16 ">
+      <div className="mt-20 md:mt-28 md:max-w-xl lg:max-w-none mx-auto border border-red-500 ">
         <div>
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center lg:text-left">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center">
             Hi, I’m <span className="text-brand-yellow">Leonel Espinal</span> .
             I am a software developer based in LA.
           </h1>
-          <p className="mt-4 md:text-lg text-center lg:text-left text-gray-800">
+          <p className="mt-4 md:text-lg text-center text-gray-800">
             I design and build high-performing websites and applications that
             deliver exceptional user experiences.
           </p>
-          <div className="flex items-center justify-center lg:justify-start gap-2 mt-4">
+          <div className="flex items-center justify-center gap-2 mt-4">
             <CTA to="/#contact">Contact me</CTA>
             <Link
               to="/#projects"
-              className="rounded-3xl border border-brand-yellow hover:bg-gray-100 transition ease-in-out duration-300 px-4 py-2"
+              className="rounded-3xl border border-brand-yellow hover:bg-gray-100 focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300 px-4 py-2"
             >
               View projects
             </Link>
           </div>
         </div>
 
-        <div className="flex justify-center">
+        {/* <div className="hidden lg:flex justify-center">
           <div className="relative flex justify-end w-56 md:w-64">
             <img src="/blob.svg" alt="" className="w-full" />
             <div className="absolute top-0 w-64 md:w-96 lg:w-[450px]">
@@ -218,7 +242,7 @@ function Hero() {
               <TitleCursor title="UI/UX designer" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -274,11 +298,11 @@ function About() {
   return (
     <section
       id="about"
-      className="bg-brand-green mt-24 md:mt-36 lg:mt-48 text-gray-100"
+      className="bg-brand-green mt-24 md:mt-28 lg:mt-36 text-gray-100"
     >
       <div className="py-24 px-6 xl:px-0 lg:max-w-4xl xl:max-w-6xl mx-auto ">
-        <div className="grid lg:grid-cols-2 items-center gap-16">
-          <div className="lg:order-2 text-center lg:text-left">
+        <div className="grid  items-center gap-16">
+          <div className="text-center">
             <h2>About me</h2>
             <p className="font-semibold text-3xl lg:text-5xl mt-2">
               Who is <span className="text-brand-yellow">Leonel</span> ?
@@ -291,17 +315,17 @@ function About() {
               itaque autem minima reiciendis unde sed quod nam enim.
             </p>
 
-            <div className="mt-4 flex justify-center lg:justify-start">
+            <div className="mt-4 flex justify-center">
               <CTA to="/#contact">Contact me</CTA>
             </div>
           </div>
-          <div className="lg:order-1 relative z-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-brand-yellow before:w-64 before:h-64 lg:before:w-80 lg:before:h-80 before:rounded-full before:-z-10 flex justify-center items-center ">
+          {/* <div className="hidden lg:flex lg:order-1 relative z-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-brand-yellow before:w-64 before:h-64 lg:before:w-80 lg:before:h-80 before:rounded-full before:-z-10  justify-center items-center ">
             <img
               src="https://png.pngtree.com/png-vector/20240123/ourmid/pngtree-avatar-job-businessman-flat-portrait-of-african-american-man-png-image_11459344.png"
               alt=""
               className="w-56 md:w-96 lg:w-[450px]"
             />
-          </div>
+          </div> */}
         </div>
         <div className="mt-16 max-w-xl mx-auto">
           <h3 className="text-center font-semibold text-xl lg:text-3xl">
@@ -359,7 +383,7 @@ function About() {
                     key={id}
                     id={`details-${id}`}
                     popover="auto"
-                    className="p-4 lg:p-8 rounded-lg bg-[#5b6d5c]/80 backdrop-blur "
+                    className="p-4 lg:p-8 rounded-lg bg-[#5b6d5c]/80 backdrop-blur"
                   >
                     {/* {content} */}
                     <div className="flex justify-end">
@@ -411,7 +435,7 @@ function Skills() {
       icon: <AppWindow />,
     },
     {
-      title: "Web development",
+      title: "Software development",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit unde maxime rerum laboriosam",
       icon: <Computer />,
@@ -424,7 +448,7 @@ function Skills() {
     },
   ];
   return (
-    <section className="mt-24 md:mt-36 lg:mt-48 pt-36 relative">
+    <section className="mt-24 md:mt-28 lg:mt-36 pt-36 relative">
       <h2 className="text-center">Skills</h2>
       <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
         My <span className="text-brand-yellow">skills</span>
@@ -490,7 +514,7 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="mt-24 md:mt-36 lg:mt-48 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto "
+      className="mt-24 md:mt-28 lg:mt-36 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto "
     >
       <h2 className="text-center">Projects</h2>
       <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
@@ -532,7 +556,7 @@ function Contact({
   return (
     <section
       id="contact"
-      className="mt-24 md:mt-36 lg:mt-48 bg-brand-green py-24 text-gray-100"
+      className="mt-24 md:mt-28 lg:mt-36 bg-brand-green py-24 text-gray-100"
     >
       <div className="px-6 md:px-12 xl:px-0 lg:max-w-4xl xl:max-w-4xl mx-auto">
         <h2 className="text-center">Contact</h2>
@@ -591,7 +615,9 @@ function Contact({
                   name="name"
                   id="name"
                   placeholder="John Doe"
-                  className={`${errors?.name ? "border-2 border-red-500" : ""}`}
+                  className={`${
+                    errors?.name ? "border-2 border-red-500" : ""
+                  } focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300`}
                 />
               </FormSpacer>
               <FormSpacer>
@@ -608,7 +634,7 @@ function Contact({
                   placeholder="john@email.com"
                   className={`${
                     errors?.email ? "border-2 border-red-500" : ""
-                  }`}
+                  } focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300`}
                 />
               </FormSpacer>
               <FormSpacer>
@@ -623,12 +649,12 @@ function Contact({
                   name="message"
                   className={`${
                     errors?.message ? "border-2 border-red-500" : ""
-                  }`}
+                  } focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300`}
                 />
               </FormSpacer>
               <button
                 type="submit"
-                className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-lg w-full text-black"
+                className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-lg w-full text-black focus-visible:border-none focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99]"
               >
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
