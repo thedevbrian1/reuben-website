@@ -545,9 +545,9 @@ function Projects() {
           </li>
         ))}
       </ul>
-      <div className="mt-12 flex justify-center">
+      {/* <div className="mt-12 flex justify-center">
         <CTA to="/#contact">Contact me</CTA>
-      </div>
+      </div> */}
     </section>
   );
 }
