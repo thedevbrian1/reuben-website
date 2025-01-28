@@ -134,6 +134,13 @@ function Hero() {
       title: "Projects",
     },
   ];
+
+  function handlePopoverClose() {
+    let popover = document.getElementById("mobile-menu");
+    popover?.hidePopover();
+    return null;
+  }
+
   return (
     <div className="mt-8 px-6 xl:px-0  lg:max-w-4xl xl:max-w-6xl mx-auto">
       <nav className=" bg-[#5b6d5c] text-gray-200 py-3 px-4 rounded-2xl flex justify-between items-center">
@@ -190,6 +197,7 @@ function Hero() {
               >
                 <Link
                   to={item.path}
+                  onClick={handlePopoverClose}
                   className="focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
                 >
                   {item.title}
