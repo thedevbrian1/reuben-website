@@ -211,12 +211,14 @@ function Hero() {
           </p>
           <div className="flex items-center justify-center gap-2 mt-4">
             <CTA to="/#contact">Contact me</CTA>
-            <Link
-              to="/#projects"
-              className="rounded-3xl border border-brand-yellow hover:bg-gray-100 focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300 px-4 py-2"
-            >
-              View projects
-            </Link>
+            <div className="has-[:active]:scale-[.97] transition ease-in-out duration-300">
+              <Link
+                to="/#projects"
+                className="rounded-3xl border border-brand-yellow hover:bg-gray-100 focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300 px-4 py-2"
+              >
+                View projects
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -348,7 +350,7 @@ function About() {
               return (
                 <div key={id}>
                   <div
-                    className={`flex gap-3 p-4 rounded-lg bg-[#475a47] border ${
+                    className={`flex gap-3 p-4 lg:p-6 rounded-lg bg-[#475a47] border ${
                       item.period.includes("present")
                         ? "border-brand-yellow"
                         : "border-white/20"
@@ -384,7 +386,7 @@ function About() {
                       </p>
                       <button
                         popoverTarget={`details-${id}`}
-                        className="mt-2 hover:text-brand-yellow"
+                        className="mt-4 outline outline-2 outline-brand-yellow px-4 py-2 rounded-3xl hover:text-brand-yellow active:scale-[.97] transition ease-in-out duration-300"
                       >
                         View more
                       </button>
@@ -401,7 +403,7 @@ function About() {
                       <button
                         popoverTarget={`details-${id}`}
                         popoverTargetAction="hide"
-                        className="bg-red-500 text-white p-2 rounded-full"
+                        className="bg-red-500 text-white p-2 rounded-full active:scale-[.97] transition duration-300 ease-in-out"
                       >
                         <X />
                       </button>
@@ -423,17 +425,19 @@ function About() {
 
 function CTA({ to, children }: { to: string; children: ReactNode }) {
   return (
-    <Link
-      to={to}
-      className="bg-brand-yellow py-1 rounded-3xl flex items-center gap-1 max-w-fit px-1 group"
-    >
-      <span className="bg-brand-green group-hover:bg-[#5b6d5c] transition ease-in-out duration-300 py-2 px-4 text-white rounded-3xl">
-        {children}
-      </span>
-      <span className="bg-white text-black w-9 h-9 grid place-items-center rounded-full">
-        <ArrowRight />
-      </span>
-    </Link>
+    <div className="has-[:active]:scale-[.97] transition ease-in-out duration-300">
+      <Link
+        to={to}
+        className="bg-brand-yellow py-1 rounded-3xl flex items-center gap-1 max-w-fit px-1 group"
+      >
+        <span className="bg-brand-green group-hover:bg-[#5b6d5c] transition ease-in-out duration-300 py-2 px-4 text-white rounded-3xl">
+          {children}
+        </span>
+        <span className="bg-white text-black w-9 h-9 grid place-items-center rounded-full">
+          <ArrowRight />
+        </span>
+      </Link>
+    </div>
   );
 }
 
@@ -536,12 +540,14 @@ function Projects() {
           <li key={crypto.randomUUID()} className="bg-gray-100 p-4 rounded-lg">
             <img src={item.imageSrc} alt="" className="rounded-lg" />
             <p className="mt-4 font-semibold text-lg">{item.title}</p>
-            <Link
-              to="/"
-              className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-md mt-4 flex max-w-fit"
-            >
-              View project
-            </Link>
+            <div className="has-[:active]:scale-[.97] transition ease-in-out duration-300">
+              <Link
+                to="/"
+                className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-3xl mt-4 flex max-w-fit"
+              >
+                View project
+              </Link>
+            </div>
           </li>
         ))}
       </ul>
@@ -665,7 +671,7 @@ function Contact({
               </FormSpacer>
               <button
                 type="submit"
-                className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-lg w-full text-black focus-visible:border-none focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99]"
+                className="bg-brand-yellow hover:bg-brand-light-yellow transition ease-in-out duration-300 px-4 py-2 rounded-lg w-full text-black focus-visible:border-none focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] active:scale-[.97]"
               >
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
