@@ -7,6 +7,7 @@ import {
   BriefcaseBusiness,
   Computer,
   Database,
+  ExternalLink,
   Mail,
   Map,
   MapPin,
@@ -16,6 +17,7 @@ import {
 } from "lucide-react";
 import {
   FacebookIcon,
+  GithubIcon,
   InstagramIcon,
   MousePointer,
   XIcon,
@@ -79,6 +81,10 @@ export default function Home({ actionData }: Route.ComponentProps) {
     {
       link: "https://facebook.com",
       icon: <FacebookIcon />,
+    },
+    {
+      link: "https://github.com/yatzeee123",
+      icon: <GithubIcon />,
     },
   ];
   return (
@@ -559,9 +565,17 @@ function Projects() {
           </li>
         ))}
       </ul>
-      {/* <div className="mt-12 flex justify-center">
-        <CTA to="/#contact">Contact me</CTA>
-      </div> */}
+      <div className="mt-12 flex justify-center">
+        {/* <CTA to="/#contact">Contact me</CTA> */}
+        <a
+          href="https://github.com/yatzeee123"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-brand-yellow hover:bg-brand-light-yellow hover:underline transition ease-in-out duration-300 px-4 py-2 rounded-3xl capitalize flex gap-1 items-center font-semibold"
+        >
+          View more on github <ExternalLink />
+        </a>
+      </div>
     </section>
   );
 }
