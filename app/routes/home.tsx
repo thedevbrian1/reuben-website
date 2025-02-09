@@ -604,9 +604,7 @@ function Contact({
         <p className="text-center font-semibold text-3xl lg:text-5xl mt-2">
           Get in <span className="text-brand-yellow">touch</span>{" "}
         </p>
-        <p className="text-center mt-4 text-gray-300 text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </p>
+
         <div className="bg-[#475A47] p-4 mt-8 rounded-lg grid md:grid-cols-2 lg:items-center gap-8">
           <div className="bg-brand-yellow rounded-lg text-black p-4 max-h-fit">
             <h3 className="font-semibold text-xl">Contact information</h3>
