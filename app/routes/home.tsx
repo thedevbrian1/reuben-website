@@ -319,11 +319,13 @@ function About() {
               Who is <span className="text-brand-yellow">Leonel</span> ?
             </p>
             <p className="text-gray-200 mt-4">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
-              asperiores aliquid tempore dolorum adipisci. Quaerat suscipit
-              minus vitae voluptatum, soluta reiciendis nisi. Libero alias vero
-              delectus exercitationem architecto expedita molestiae. Rerum
-              itaque autem minima reiciendis unde sed quod nam enim.
+              Hello I'm Leo! I’m a software engineer and data specialist with
+              expertise in full-stack development, cloud infrastructure, and
+              automation. I build scalable applications, optimize cloud
+              deployments, and design high-performance data pipelines using
+              Python, Golang, AWS, and Kubernetes. Passionate about solving
+              complex problems, I focus on creating efficient, reliable software
+              solutions that drive innovation.
             </p>
 
             <div className="mt-4 flex justify-center">
@@ -614,10 +616,10 @@ function Contact({
                   <Phone />
                 </span>
                 <a
-                  href="tel:+(213) 555-1234"
+                  href="tel:+1(213)-823-0968"
                   className="hover:underline transition ease-in-out duration-300"
                 >
-                  (213) 555-1234
+                  +1(213)-823-0968
                 </a>
               </p>
               <p className="flex gap-2 items-center">
@@ -625,17 +627,19 @@ function Contact({
                   <Mail />
                 </span>
                 <a
-                  href="mailto:leonelcult@gmail.com"
+                  href="mailto:leonelespinal314@gmail.com"
                   className="hover:underline transition ease-in-out duration-300"
                 >
-                  leonelcult@gmail.com
+                  leonelespinal314@gmail.com
                 </a>
               </p>
               <p className="flex gap-2 items-center">
                 <span>
                   <MapPin />
                 </span>
-                <span>Los Angeles, CA</span>
+                <span>
+                  235 South Tower Drive, Beverly Hills California, CA 99211
+                </span>
               </p>
             </address>
           </div>
