@@ -155,7 +155,7 @@ function Hero() {
           className="font-semibold flex gap-2 focus-visible:outline-none focus-visible:border-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-[#00db99] transition ease-in-out duration-300"
         >
           <span className="text-brand-yellow ">L</span>
-          <span>Lionel</span>
+          <span>Leonel</span>
         </Link>
         <button
           popoverTarget="mobile-menu"
@@ -614,10 +614,10 @@ function Contact({
                   <Phone />
                 </span>
                 <a
-                  href="tel:+1(213)-823-0968"
+                  href="tel:+1(323)-379-3675"
                   className="hover:underline transition ease-in-out duration-300"
                 >
-                  +1(213)-823-0968
+                  +1(323)-379-3675
                 </a>
               </p>
               <p className="flex gap-2 items-center">
