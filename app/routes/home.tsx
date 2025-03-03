@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import {
+  DeveloperIllustration,
   FacebookIcon,
   GithubIcon,
   InstagramIcon,
@@ -285,25 +286,33 @@ function TitleCursor({ title, color }: { title: string; color?: string }) {
 function About() {
   let jobs = [
     {
-      title: "Software engineer",
-      company: "Logicworks",
-      period: "July 2022 - present",
+      title: "Data Engineer",
+      company: "Pulselight",
+      period: "Sept 2023 - Dec 2024",
       details:
-        "Architected and developed a reporting dashboard leveraging FastAPI for high-performance backend APIs and React for interactive frontend components.Designed and implemented scalable, cloud-based data pipelines using AWS Lambda and S3 for real-time report generation.Created reusable React components and optimized rendering for complex data visualizations in Material UI.Improved API response times by 40% by implementing query optimization techniques and asynchronous processing.Partnered with DevOps teams to ensure seamless deployment with Docker and Kubernetes, maintaining 99.9% uptime.",
+        "Ensured efficient data integration and transformation process by automating dynamic task creation, status tracking, and error handling, significantly enhancing the operational efficiency of data pipelines. Automated processes to save task results and performance metrics to PostgreSQL databases, facilitating comprehensive reporting and analysis of ETL workflows. Utilized Python and Airflow operators to manage PII data operations, dynamic scope name generation, session handling, and operation polling, enabling seamless data flow and integration across multiple systems and environments. Implemented automated task duration tracking and real-time error detection mechanisms to monitor and improve data pipeline performance, resulting in a 30% reduction in data processing time and enhanced data quality. Implemented ETL workflows using SQL SSIS and SAP BODS to automate tasks for data cataloging and Torch Analytics Platform.​",
     },
     {
-      title: "Software engineer",
-      company: "Redshelf inc",
-      period: "January 2021 - April 2022",
+      title: "Junior Software Engineer",
+      company: "Powerschool",
+      period: "Nov 2020 - June 2023",
       details:
-        "Contributed to the development of comprehensive reporting tools using Django for server-side logic and React for frontend UI/UX.Enhanced backend systems by optimizing database queries with PostgreSQL, reducing report generation time by 30%.Implemented a modular React component architecture to streamline code reuse across dashboards.Worked closely with product managers and designers to improve reporting workflows, increasing end-user engagement by 25%.Integrated third-party analytics tools to support detailed data visualizations and reporting insights.",
+        "Managed and refactored monolith legacy codebases, facilitating modularization and migration to microservices architecture to improve agility and team scalability. Designed and implemented a proprietary identity provider using OAuth2 for centralized authentication and authorization across multiple applications, enhancing security and user management capabilities. Engineered a reusable and scalable Serverless stack for real-time alerting, including response plans and escalation workflows, optimizing resource utilization and ensuring high availability. Reducing costs by 65% compared to previous 3rd party stack (NewRelic + PagerDuty). Created comprehensive documentation and conducted training sessions for client teams on newly implemented technologies and architectural patterns. Led the architecture design and development efforts for projects using PHP, Python, React, and Serverless technologies, ensuring scalability, maintainability, and performance optimization.",
+    },
+
+    {
+      title: "Junior Software Engineer",
+      company: "Indeed",
+      period: "June 2018 - November 2020",
+      details:
+        "Participated in incident response activities for application security incidents. Worked on several microservices and automated testing tools to support the development ecosystem at Indeed. Evaluated and managed security tools and technologies to improve the detection and prevention of vulnerabilities. Developed automation processes, deployments, and maintenance activities using Docker and Jenkins. Remediated all findings from security audits, ensuring compliance with industry standards and enhancing overall system security.",
     },
     {
-      title: "Freelance developer",
-      company: "",
-      period: "June 2018 - December 2020",
+      title: "Software Engineer",
+      company: "SimplyHired",
+      period: "Mar 2016 - June 2018",
       details:
-        "Designed and implemented scalable web applications using Flask and Django, focusing on RESTful API development and backend optimization.Built dynamic, responsive user interfaces with React, integrating modern libraries like Redux and Material-UI.Delivered complete solutions, including deployment on platforms like Heroku and Azure Container Apps ensuring smooth CI/CD pipelines.Collaborated with clients to gather requirements, deliver prototypes, and finalize high-quality software within deadlines.",
+        "Configured and led support for software build/deploy pipelines in AWS.Managed and optimized automation tools to reduce time and complexity of system operation tasks using Python.Led the deployment and configuration of virtual machines using Jenkins, Terraform, AWS, and Kubernetes.Troubleshot production issues with a focus on AWS infrastructure.Automated labeling processes and created plug-and-play tools utilized across the Scaled Operations organization using TypeScript, Python, and Pandas. Provided support of standard and customized deliverables for Scaled Operations’ business analysts. Streamlined advertiser moderation and web scraping efforts for the SMB team. Delivered BI analysis on CPC and CPI to improve monetization using Python, Pandas, and scikit-learn.",
     },
   ];
   return (
@@ -545,13 +554,17 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="mt-24 md:mt-28 lg:mt-36 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto "
+      className="mt-24 md:mt-28 lg:mt-36 px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto grid lg:grid-cols-2 gap-8 items-center justify-items-center lg:justify-items-start"
     >
-      <h2 className="text-center">Projects</h2>
-      <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
-        My <span className="text-brand-yellow">Projects</span>
-      </p>
-      <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div>
+        <h2 className="font-semibold text-center lg:text-left text-3xl lg:text-5xl">
+          View my projects on GitHub
+        </h2>
+        <p className="  mt-2 text-center lg:text-left">
+          All my projects are easily accessible on GitHub using the link
+          provided
+        </p>
+        {/* <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((item) => (
           <li key={crypto.randomUUID()} className="bg-gray-100 p-4 rounded-lg">
             <img src={item.imageSrc} alt="" className="rounded-lg" />
@@ -566,17 +579,20 @@ function Projects() {
             </div>
           </li>
         ))}
-      </ul>
-      <div className="mt-12 flex justify-center">
-        {/* <CTA to="/#contact">Contact me</CTA> */}
-        <a
-          href="https://github.com/yatzeee123"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-brand-yellow hover:bg-brand-light-yellow hover:underline transition ease-in-out duration-300 px-4 py-2 rounded-3xl capitalize flex gap-1 items-center font-semibold"
-        >
-          View more on github <ExternalLink />
-        </a>
+      </ul> */}
+        <div className="mt-12 flex justify-center lg:justify-start">
+          <a
+            href="https://github.com/yatzeee123"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-brand-yellow hover:bg-brand-light-yellow hover:underline transition ease-in-out duration-300 px-4 py-2 rounded-3xl capitalize flex gap-1 items-center font-semibold"
+          >
+            My github <ExternalLink />
+          </a>
+        </div>
+      </div>
+      <div className="w-48 lg:w-96">
+        <DeveloperIllustration />
       </div>
     </section>
   );
