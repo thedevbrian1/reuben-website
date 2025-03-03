@@ -466,68 +466,6 @@ function CTA({ to, children }: { to: string; children: ReactNode }) {
   );
 }
 
-function Skills() {
-  let skills = [
-    {
-      title: "Web design",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit unde maxime rerum laboriosam",
-      icon: <AppWindow />,
-    },
-    {
-      title: "Software development",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit unde maxime rerum laboriosam",
-      icon: <Computer />,
-    },
-    {
-      title: "Database development",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit unde maxime rerum laboriosam",
-      icon: <Database />,
-    },
-  ];
-  return (
-    <section className="mt-24 md:mt-28 lg:mt-36 pt-36 relative">
-      <h2 className="text-center">Skills</h2>
-      <p className="font-semibold text-3xl lg:text-5xl mt-2 text-center">
-        My <span className="text-brand-yellow">skills</span>
-      </p>
-      <div className="bg-brand-yellow absolute z-10 top-0 w-full">
-        <ul className="flex justify-center gap-4 md:gap-8 p-4 w-full items-center">
-          <li className="relative after:absolute after:content-['*'] after:-right-3  md:after:-right-5 after:top-1">
-            Web design
-          </li>
-          <li className="relative after:absolute after:content-['*'] after:-right-3  md:after:-right-5 after:top-1">
-            Web development
-          </li>
-          <li className="hidden md:inline-flex relative after:absolute after:content-['*'] after:-right-3  md:after:-right-5 after:top-1">
-            UI/UX design
-          </li>
-          <li>API design</li>
-        </ul>
-      </div>
-      <div className="absolute top-0 w-full bg-brand-green h-16 -rotate-6 lg:-rotate-3"></div>
-      <ul className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-6 xl:px-0 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto">
-        {skills.map((item) => (
-          <li
-            key={crypto.randomUUID()}
-            className="bg-gray-100 p-4 lg:p-8 rounded-lg"
-          >
-            <span className="bg-brand-yellow rounded-full h-14 w-14 grid place-items-center text-black">
-              {item.icon}
-            </span>
-            <h3 className="font-semibold text-xl mt-4 text-gray-800">
-              {item.title}
-            </h3>
-            <p className="mt-2 text-gray-800">{item.description}</p>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
 function Projects() {
   let projects = [
     {
